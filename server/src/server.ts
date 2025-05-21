@@ -4,6 +4,7 @@ import db from "./config/db";
 import colors from "colors";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec, { swaggerUiOptios } from "./config/swagger";
+import cors, { CorsOptions } from "cors";
 
 async function connectDB() {
     try {
@@ -18,7 +19,14 @@ async function connectDB() {
 
 connectDB();
 
+const corsOptions: CorsOptions = {
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+
 const server = express();
+server.use(cors(corsOptions));
 server.use(express.json());
 server.use("/api/products", router);
 

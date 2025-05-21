@@ -1,4 +1,10 @@
-import { Form, Link, useActionData, ActionFunctionArgs } from "react-router";
+import {
+    Form,
+    Link,
+    useActionData,
+    ActionFunctionArgs,
+    redirect,
+} from "react-router";
 import ErrorMessage from "../components/ErrorMessage";
 import { storeProduct } from "../services/ProductService";
 
@@ -16,7 +22,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
     await storeProduct(data);
 
-    return {};
+    return redirect("/");
 }
 
 export default function NewProduct() {
