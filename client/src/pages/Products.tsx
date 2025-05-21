@@ -18,7 +18,7 @@ export default function Products() {
                 </h2>
                 <Link
                     to="/products/create"
-                    className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500"
+                    className="rounded-md bg-primary p-3 text-sm font-bold text-white shadow-sm hover:bg-primary/80"
                 >
                     Agregar producto
                 </Link>

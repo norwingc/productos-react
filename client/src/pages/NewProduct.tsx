@@ -35,7 +35,7 @@ export default function NewProduct() {
                 </h2>
                 <Link
                     to="/"
-                    className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500"
+                    className="rounded-md bg-primary p-3 text-sm font-bold text-white shadow-sm hover:bg-primary/80"
                 >
                     Voler a la lista de productos
                 </Link>
@@ -68,7 +68,7 @@ export default function NewProduct() {
                 </div>
                 <input
                     type="submit"
-                    className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
+                    className="mt-5 w-full bg-primary p-2 text-white font-bold text-lg cursor-pointer rounded"
                     value="Registrar Producto"
                 />
             </Form>
