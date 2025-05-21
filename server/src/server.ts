@@ -5,6 +5,7 @@ import colors from "colors";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec, { swaggerUiOptios } from "./config/swagger";
 import cors, { CorsOptions } from "cors";
+import morgan from "morgan";
 
 async function connectDB() {
     try {
@@ -28,6 +29,7 @@ const corsOptions: CorsOptions = {
 const server = express();
 server.use(cors(corsOptions));
 server.use(express.json());
+server.use(morgan("dev"));
 server.use("/api/products", router);
 
 server.use(
