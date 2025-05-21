@@ -1,6 +1,8 @@
-import { Form, Link, useActionData } from "react-router";
+import { Form, Link, useActionData, ActionFunctionArgs } from "react-router";
+import ErrorMessage from "../components/ErrorMessage";
+import { storeProduct } from "../services/ProductService";
 
-export async function action({ request }) {
+export async function action({ request }: ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData());
     let errors = "";
     if (Object.values(data).some((value) => !value)) {
@@ -8,12 +10,17 @@ export async function action({ request }) {
         return errors;
     }
 
+    if (errors.length) {
+        return errors;
+    }
+
+    await storeProduct(data);
+
     return {};
 }
 
 export default function NewProduct() {
-    const error = useActionData();
-    console.log(error);
+    const error = useActionData() as string;
     return (
         <>
             <div className="flex justify-between">
@@ -27,7 +34,7 @@ export default function NewProduct() {
                     Voler a la lista de productos
                 </Link>
             </div>
-
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             <Form className="mt-10" method="POST">
                 <div className="mb-4">
                     <label className="text-gray-800" htmlFor="name">
