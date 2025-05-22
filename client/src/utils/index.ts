@@ -4,3 +4,7 @@ export function formatPrice(price: number) {
         currency: "COP",
     }).format(price);
 }
+
+export function toBoolean(value: string) {
+    return value.toLowerCase() === "true";
+}
