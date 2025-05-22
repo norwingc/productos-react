@@ -1,10 +1,15 @@
-import { Link, useLoaderData } from "react-router";
-import { getProducts } from "../services/ProductService";
+import { ActionFunctionArgs, Link, useLoaderData } from "react-router";
+import { getProducts, updateAvailability } from "../services/ProductService";
 import ProductDetails from "../components/ProductDetails";
 
 export async function loader() {
     const products = await getProducts();
     return products;
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+    const data = Object.fromEntries(await request.formData());
+    await updateAvailability(Number(data.id));
 }
 
 export default function Products() {

@@ -87,3 +87,7 @@ export async function updateProduct(data: ProductData, id: Product["id"]) {
 export async function deleteProduct(id: Product["id"]) {
     await axios.delete(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
 }
+
+export async function updateAvailability(id: Product["id"]) {
+    await axios.patch(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
+}
